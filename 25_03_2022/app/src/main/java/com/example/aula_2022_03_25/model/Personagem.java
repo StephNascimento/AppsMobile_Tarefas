@@ -11,7 +11,7 @@ public class Personagem implements Serializable {
     private String altura;
     private int id = 0;
 
-    //Armazenizando os dados
+    //Guardando os dados
     public Personagem(String nome, String nascimento, String altura){
         this.nome = nome;
         this.nascimento = nascimento;
