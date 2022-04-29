@@ -24,10 +24,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ListaPersonagemActivity extends AppCompatActivity {
 
+    //Variáveis que serão ser utilizadas no código
     public static final String TITULO_APPBAR = "Lista de Personagem";
-    private final PersonagemDAO dao = new PersonagemDAO();
-    private ArrayAdapter<Personagem> adapter;
+    private final PersonagemDAO dao = new PersonagemDAO(); //Pegando objeto de outra classe
+    private ArrayAdapter<Personagem> adapter; //Um adaptador da lista
 
+    //No que o usuário entra no app, esse método é buscado pelo app em seguida
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,7 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         configuraLista();
     }
 
+    //Aparece um botão para criar um novo personagem e em seguida abrindo o formulário
     private void configuraFabNovoPersonagem(){
         FloatingActionButton botaoNovoPersonagem = findViewById(R.id.fab_add);
         botaoNovoPersonagem.setOnClickListener(new View.OnClickListener() {
@@ -47,21 +50,25 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         });
     }
 
+    //Abre a janela do formulário
     private void abreFormulario(){
         startActivity(new Intent(this, FormularioPersonagemActivity.class));
     }
 
+    //Atualizando o personagem
     @Override
     protected void onResume(){
         super.onResume();
         atualizaPersonagem();
     }
 
+    //Alterando as informações em outro código
     private void atualizaPersonagem(){
         adapter.clear();
         adapter.addAll(dao.todos());
     }
 
+    //Método para remover um personagem criado
     private void remove(Personagem personagem){
         dao.remove(personagem);
         adapter.remove(personagem);
@@ -71,9 +78,11 @@ public class ListaPersonagemActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         super.onCreateContextMenu(menu, v, menuInfo);
         //menu.add("Remover);
+        //Aparecer menu inflável
         getMenuInflater().inflate(R.menu.activity_lista_personagem_menu, menu);
     }
 
+    //O personagem que for escolhido aparece uma janela inflável para remover o personagem
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
         int itemId = item.getItemId();
@@ -95,6 +104,7 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    //Aparece lista de configuração de personagem e configura
     private void configuraLista(){
         ListView listaDePersonagens = findViewById(R.id.activity_main_lista_personagem);
         configuraAdapter(listaDePersonagens);
@@ -102,6 +112,7 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         registerForContextMenu(listaDePersonagens);
     }
 
+    //Personagem que for escolhido poderá ser configurado na tela de formulário
     private void configuraItemPorClique(ListView listaDePersonagem){
         listaDePersonagem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -112,12 +123,14 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         });
     }
 
+    //Abre a tela do formulário para configurar o personagem
     private void abreFormularioEditar(Personagem personagemEscolhido){
         Intent vaiParaFormulario = new Intent(ListaPersonagemActivity.this, FormularioPersonagemActivity.class);
         vaiParaFormulario.putExtra(CHAVE_PERSONAGEM, personagemEscolhido);
         startActivity(vaiParaFormulario);
     }
 
+    //Método apra validar o personagem configurado
     private void configuraAdapter(ListView listaDePersonagens){
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listaDePersonagens.setAdapter(adapter);

@@ -19,8 +19,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Nome"
-            android:inputType="textPersonName"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText_altura"
@@ -29,8 +28,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Altura (1,80)"
-            android:inputType="numberDecimal"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/editText_nascimento"
@@ -39,8 +37,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Nascimento (00/00/0000)"
-            android:inputType="date"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:inputType="date" />
     </LinearLayout>
 
 </ScrollView>
