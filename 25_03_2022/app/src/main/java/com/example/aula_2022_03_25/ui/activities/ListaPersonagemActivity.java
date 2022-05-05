@@ -88,7 +88,7 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if(itemId == R.id.activity_lista_personagem_menu_remover){
             new AlertDialog.Builder(this)
-                .setTitle("Removendo Personagem")
+                    .setTitle("Removendo Personagem")
                     .setMessage("Tem certeza que quer remover?")
                     .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                         @Override

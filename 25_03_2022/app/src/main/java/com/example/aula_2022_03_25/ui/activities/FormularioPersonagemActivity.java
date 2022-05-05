@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aula_2022_03_25.R;
 import com.example.aula_2022_03_25.dao.PersonagemDAO;
@@ -17,7 +18,7 @@ import com.example.aula_2022_03_25.model.Personagem;
 /*import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;*/
 
-public class FormularioPersonagemActivity extends Activity {
+public class FormularioPersonagemActivity extends AppCompatActivity {
 
     private static final String TITULO_APPBAR_EDITA_PERSONAGEM = "Editar o Personagem";
     private static final  String TITULO_APPBAR_NOVO_PERSONAGEM = "Novo Personagem";
